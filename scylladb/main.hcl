@@ -13,6 +13,12 @@ container "scylla" {
         "--authorizer",
         "CassandraAuthorizer",
     ]
+
+    volume {
+        source      = "./scylla"
+        destination = "/var/lib/scylla"
+    }
+
     port {
         local = 9042
         remote  = 9042
