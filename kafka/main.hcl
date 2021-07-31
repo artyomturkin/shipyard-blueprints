@@ -7,14 +7,26 @@ container "zookeeper" {
         name = "confluentinc/cp-zookeeper:6.2.0"
     }
 
+    volume {
+        source      = data("/zookeeper/data")
+        destination = "/var/lib/zookeeper/data"
+    }
+
+    volume {
+        source      = data("/zookeeper/log")
+        destination = "/var/lib/zookeeper/log"
+    }
+
     env {
         key   = "ZOOKEEPER_CLIENT_PORT"
         value = 2181
     }
+
     env{
         key   = "ZOOKEEPER_TICK_TIME"
         value = 2000
     }
+
     port {
         local  = 2181
         remote = 2181
@@ -29,6 +41,11 @@ container "broker" {
 
     image {
         name = "confluentinc/cp-server:6.2.0"
+    }
+
+    volume {
+        source      = data("/kafka-broker")
+        destination = "/var/lib/kafka/data"
     }
 
     env {

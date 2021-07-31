@@ -15,7 +15,7 @@ container "scylla" {
     ]
 
     volume {
-        source      = "./scylla"
+        source      = data("/scylla")
         destination = "/var/lib/scylla"
     }
 
