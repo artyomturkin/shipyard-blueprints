@@ -12,6 +12,8 @@ container "scylla" {
         "PasswordAuthenticator",
         "--authorizer",
         "CassandraAuthorizer",
+        "--experimental",
+        "1",
     ]
 
     volume {
